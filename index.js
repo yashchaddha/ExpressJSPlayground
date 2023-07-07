@@ -9,10 +9,27 @@ const app=express();
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'));
 
+//Contact List
+var contactList=[
+    {
+        name:'Yash Chaddha',
+        phone:'9170985557'
+    },
+    {
+        name:'Harsh Chaddha',
+        phone:'8840633587'
+    },
+    {
+        name:'Kinetic Codes',
+        phone:'7007910494'
+    }
+];
+
 app.get('/',function(req,res){
     return res.render('home',{
         title:'My contact list',
-        heading: 'Yash is using EJS'
+        heading: 'Below is Yash'+"'s"+' Contact List',
+        contact_list:contactList
     });
 })
 
