@@ -3,8 +3,11 @@ const path=require('path');
 //port
 const port=8000
 
-//middleware
 const app=express();
+
+//middleware
+const bodyparser=require('body-parser');
+app.use(bodyparser.urlencoded({extended:false}));
 
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'));
@@ -39,6 +42,11 @@ app.get('/practise',function(req,res){
         name:'Yash Chaddha'
     })
 })
+
+app.post('/create-contact',function(req,res){
+    contactList.push(req.body);
+    return res.redirect('/');
+});
 
 app.listen(port,function(err,data){
     if(err){
