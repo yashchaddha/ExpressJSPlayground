@@ -10,5 +10,13 @@
     <h2>
         <%= heading%>
     </h2>
+    <ul>
+        <% for(let i of contact_list){%>
+            <li>
+                <p><%=i.name%></p>
+                <p><%=i.phone%></p>
+            </li>
+        <%}%>
+    </ul>
 </body>
 </html>
