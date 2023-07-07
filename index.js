@@ -1,13 +1,17 @@
 const express=require('express');
-
+const path=require('path');
 //port
 const port=8000
 
 //middleware
 const app=express();
 
-app.get('/',function(request,response){
-    response.send('<h1>Wooow Yash!! You have built your First Express JS App! Congratulations!!!!!!</h1>');
+app.set('view engine','ejs');
+app.set('views', path.join(__dirname,'views'));
+
+app.get('/',function(req,res){
+    return res.render('home',{title:'My contact list',
+                              heading: 'Yash is using EJS'});
 })
 
 app.listen(port,function(err,data){
