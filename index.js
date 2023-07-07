@@ -9,6 +9,20 @@ const app=express();
 const bodyparser=require('body-parser');
 app.use(bodyparser.urlencoded({extended:false}));
 
+//middleware1
+app.use(function(req,res,next){
+    req.myName="Yash";
+    console.log("Middleware1 called");
+    next(); // Next calls the next Middleware
+})
+
+//middleware2
+app.use(function(req,res,next){
+    console.log("Fetching the value from the previous middleware:",req.myName);
+    console.log("Middleware2 called");
+    next();
+})
+
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'));
 
