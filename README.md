@@ -9,4 +9,4 @@
 - Installing MongoDb
 - Installing HomeBrew
 - Installling Studio3T for Database Visualization
-- Ran Mongoose
+- Ran Mongoose                  
