@@ -9,20 +9,24 @@
     <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-    <h2>
-        <%= heading%>
-    </h2>
-    <ul>
-        <% for(let i of contact_list){%>
+    <h2><%= heading%></h2>
+
+    <div class="container">
+        <ul>
+            <% for(let i of contact_list){%>
             <li>
-                <p><%=i.name%></p>
-                <p><%=i.phone%></p>
-                <a href="/delete-contact/<%= i.phone%>">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </a>
+                
+                    <p><%=i.name%></p>
+                    <p><%=i.phone%></p>
+                    <a href="/delete-contact/<%= i.phone%>">
+                        <i class="fa fa-trash" aria-hidden="true" style="color: white;"></i>
+                    </a>
+                
             </li>
-        <%}%>
-    </ul>
-    <script type="text/javascript" src="/js/home.js"></script>
+            <%}%>
+        </ul>
+
+    </div>
+<script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
