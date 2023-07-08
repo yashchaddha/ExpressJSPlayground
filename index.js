@@ -3,6 +3,9 @@ const path=require('path');
 //port
 const port=8000
 
+const db=require('./config/mongoose');
+const Contact=require('./models/contacts');
+
 const app=express();
 
 //middleware
@@ -11,20 +14,6 @@ app.use(bodyparser.urlencoded({extended:false}));
 
 //middleware to render static files
 app.use(express.static('assets'));
-
-// //middleware1
-// app.use(function(req,res,next){
-//     req.myName="Yash";
-//     console.log("Middleware1 called");
-//     next(); // Next calls the next Middleware
-// })
-
-// //middleware2
-// app.use(function(req,res,next){
-//     console.log("Fetching the value from the previous middleware:",req.myName);
-//     console.log("Middleware2 called");
-//     next();
-// })
 
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'));
@@ -72,6 +61,7 @@ app.get('/delete-contact/:phone',function(req,res){
     let contactToBeDeleted=req.params.phone;
     let contactIndex=contactList.findIndex((contact)=>contact.phone==contactToBeDeleted);
     contactList.splice(contactIndex,1);
+
     return res.redirect('back');
 });
 
