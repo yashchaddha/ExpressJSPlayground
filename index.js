@@ -53,8 +53,13 @@ app.get('/practise',function(req,res){
 })
 
 app.post('/create-contact',function(req,res){
-    contactList.push(req.body);
-    return res.redirect('/');
+    Contact.create(req.body).then(newContact=>{
+    console.log(newContact)
+    res.redirect('/')}
+    ).catch(err=>{
+        console.log(err);
+        return;
+    });
 });
 
 app.get('/delete-contact/:phone',function(req,res){
