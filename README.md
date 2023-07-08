@@ -6,3 +6,7 @@
 - CRUD Operations
 - Serving Static Files
 - Styling the page
+- Installing MongoDb
+- Installing HomeBrew
+- Installling Studio3T for Database Visualization
+- Ran Mongoose
