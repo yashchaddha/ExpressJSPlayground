@@ -4,4 +4,6 @@
 - Receiving Response from Server
 - Adding Middlewares
 - Serving Static Files (CSS,JSS and Images) using Middleware (static)
-  
+- CRUD Operations
+- Styling the page
+
