@@ -45,6 +45,9 @@ var contactList=[
     }
 ];
 
+
+//routes
+
 app.get('/',function(req,res){
     return res.render('home',{
         title:'My contact list',
@@ -63,6 +66,13 @@ app.get('/practise',function(req,res){
 app.post('/create-contact',function(req,res){
     contactList.push(req.body);
     return res.redirect('/');
+});
+
+app.get('/delete-contact/:phone',function(req,res){
+    let contactToBeDeleted=req.params.phone;
+    let contactIndex=contactList.findIndex((contact)=>contact.phone==contactToBeDeleted);
+    contactList.splice(contactIndex,1);
+    return res.redirect('back');
 });
 
 app.listen(port,function(err,data){
