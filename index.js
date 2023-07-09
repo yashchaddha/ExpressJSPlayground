@@ -36,13 +36,15 @@ var contactList=[
 
 
 //routes
-
+//fetching data from db
 app.get('/',function(req,res){
-    return res.render('home',{
+    Contact.find({}).then(contactList=>{
+       return res.render('home',{
         title:'My contact list',
         heading: 'Below is Yash'+"'s"+' Contact List',
         contact_list:contactList
-    });
+        })
+    })
 })
 
 app.get('/practise',function(req,res){
@@ -57,17 +59,16 @@ app.post('/create-contact',function(req,res){
     console.log(newContact)
     res.redirect('/')}
     ).catch(err=>{
-        console.log(err);
+        console.log("Error in creating contact",err);
         return;
     });
 });
 
-app.get('/delete-contact/:phone',function(req,res){
-    let contactToBeDeleted=req.params.phone;
-    let contactIndex=contactList.findIndex((contact)=>contact.phone==contactToBeDeleted);
-    contactList.splice(contactIndex,1);
-
-    return res.redirect('back');
+app.get('/delete-contact',function(req,res){
+    //getting the id of the item to be deleted
+    let id=req.query.id;
+    //find the contact in the db using id and then delete
+    Contact.findByIdAndDelete(id).then(res.redirect('/')).catch(console.log('Error in deleting contact from DB'));
 });
 
 app.listen(port,function(err,data){
